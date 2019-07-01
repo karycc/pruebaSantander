@@ -1,0 +1,43 @@
+<div class="row" *ngIf="inicio">
+    <div class="col-md-6 col-sm-12">
+    <h2>Consulta aqui la calidad del aire</h2>
+    </div>
+    <div class="col-md-6 col-sm-12">
+    <button type="button" class="btn btn-primary" (click)="consultar()">Consultar</button>
+    </div>
+</div>
+<div class="row" *ngIf="!inicio">
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col" class="table-primary"># ID</th>
+                    <th scope="col" class="table-primary">Source</th>
+                    <th scope="col" class="table-primary">Station</th>
+                    <th scope="col" class="table-primary">ID</th>
+                    <th scope="col" class="table-primary">Indexes</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let dato of datos">
+                    <th scope="row">{{ dato._id }}</th>
+                    <td>{{ dato.stations[0].source_id }}</td>
+                    <td>{{ dato.stations[0].name }}</td>
+                    <td>{{ dato.stations[0].id }}</td>
+                    <td>
+                        value: {{ dato.stations[0].indexes[0].value }} <br>
+                        scale: {{ dato.stations[0].indexes[0].scale }} <br>
+
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div>
+        <button *ngIf="currentPage > 1" type="button" class="btn btn-link" (click)="prevPage()">Anterior</button>
+        <button type="button" class="btn btn-link" (click)="nextPage()">Siguiente</button>
+    </div>
+</div>

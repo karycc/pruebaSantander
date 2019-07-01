@@ -1,0 +1,20 @@
+<div class="row">
+    <div class="col-12">
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link active" routerLink="/inicio">Inicio</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/listado">Calidad del aire</a>
+            </li>
+            <li class="nav-item" *ngIf="showAdmin">
+                    <a class="nav-link" routerLink="/administracion">Administración</a>
+                </li>
+                <li class="nav-item">
+                        <a class="nav-link" href="#" (click)="logout()">Salir</a>
+                    </li>
+
+        </ul>
+        <router-outlet></router-outlet>
+    </div>
+</div>

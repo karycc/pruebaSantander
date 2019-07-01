@@ -1,0 +1,54 @@
+<div class="row">
+    <div class="col-md-12 col-sm-12">
+
+        <h1>Administracion de usuarios</h1>
+        <form #adminForm="ngForm">
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="adminUser" id="adminUser" [(ngModel)]="adminUser"
+                    value="1" (change)="selectOption(1);">
+                <label class="form-check-label" for="delete">
+                    Eliminar usuario
+                </label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="adminUser" id="adminUser" value="2"
+                    (click)="selectOption(2);" [(ngModel)]="adminUser">
+                <label class="form-check-label" for="modify">
+                    Modificar usuario
+                </label>
+            </div>
+        </form>
+    </div>
+
+    <div class="col-md-12 col-sm-12" *ngIf="optionSelect==1">
+        <p>Eliminar usuario</p>
+        <div class="alert alert-success" role="alert" *ngIf="successDeleteUser">
+            Usuario Eliminado
+        </div>
+    
+        <form (ngSubmit)="search()" #deleteForm="ngForm">
+            <div class="form-group row">
+                <label for="user" class="col-md-2 col-lg-2 col-sm-12 col-form-label">Usuario:</label>
+                <div class="col-md-3 ccol-lg-3 ol-sm-12">
+                    <input type="text" class="form-control" id="user" required [(ngModel)]="User.user" name="user"
+                        #user="ngModel">
+                </div>
+                <div [hidden]="user.valid || user.pristine" class="alert alert-danger">
+                    <div *ngIf="user.errors?.required">
+                        Este campo es requerido.
+                    </div>
+                </div>
+                <div class="col-md-2 col-lg-2 col-sm-12">
+                    <button type="submit" class="btn btn-success" [disabled]="!deleteForm.form.valid">Eliminar</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+    <br />
+    <div class="col-md-12 col-sm-12" *ngIf="optionSelect==2">
+        <h3>Modificar usuario ... En construcción</h3>
+
+    </div>
+</div>

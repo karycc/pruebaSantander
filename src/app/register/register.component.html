@@ -1,0 +1,93 @@
+<div class="row">
+    <div class="col-md-8 col-sm-12">
+        <h1>Registro</h1>
+    </div>
+    <div class="col-md-4 col-sm-12">
+        <button type="button" class="btn btn-primary" (click)="login()" >Regresar a Login</button>
+    </div>
+
+    <div class="col-md-12 col-sm-12" *ngIf="successRegister">
+        <div class="alert alert-success" role="alert">
+            Alta de usuario exitosa
+        </div>
+    </div>
+    <div class="col-md-12 col-sm-12">
+        <form (ngSubmit)="addUser(); addForm.reset();" #addForm="ngForm">
+            <div class="form-group">
+                <label for="user">Usuario*</label>
+                <input type="text" class="form-control" id="user" required [(ngModel)]="userReg.user" name="user"
+                    #user="ngModel">
+                <div [hidden]="user.valid || user.pristine" class="alert alert-danger">
+                    <div *ngIf="user.errors?.required">
+                        Este campo es requerido.
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="name">Nombre*</label>
+                <input type="text" class="form-control" id="name" required [(ngModel)]="userReg.name" name="name"
+                    #name="ngModel">
+                <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+                    <div *ngIf="name.errors?.required">
+                        Este campo es requerido.
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="lastName">Apellidos</label>
+                <input type="text" class="form-control" id="lastName" required [(ngModel)]="userReg.lastName"
+                    name="lastName" #lastName="ngModel">
+                <div [hidden]="lastName.valid || lastName.pristine" class="alert alert-danger">
+                    <div *ngIf="lastName.errors?.required">
+                        Este campo es requerido.
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="birthdate">Fecha de nacimiento*</label>
+                <input type="date" class="form-control" id="birthdate" required [(ngModel)]="userReg.birthdate"
+                    name="birthdate" #birthdate="ngModel">
+                <div [hidden]="birthdate.valid || birthdate.pristine" class="alert alert-danger">
+                    <div *ngIf="birthdate.errors?.valid">
+                        Este campo es requerido.
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email">Correo electronico *</label>
+                <input type="text" class="form-control" id="email" required [(ngModel)]="userReg.email" name="email"
+                    #email="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+
+                <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
+                    <div *ngIf="email.errors?.required ">
+                        Este campo no es valido.
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password">Elige una contraseña *</label>
+                <input type="text" class="form-control" id="password" required [(ngModel)]="userReg.password"
+                    name="password" #password="ngModel">
+                <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
+                    <div *ngIf="email.errors?.required ">
+                        Este campo es requerido.
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="profile">Perfil *</label>
+                <select class="form-control" id="profile" required [(ngModel)]="userReg.profile" name="profile"
+                    #profile="ngModel">
+                    <option value="user">Usuario</option>
+                    <option value="admin">Administrador</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-success" [disabled]="!addForm.form.valid">Registrar</button>
+        </form>
+    </div>
+
+
+
+
+</div>
